@@ -8,23 +8,7 @@ import MeCab
 import numpy as np
 import ot
 
-
-def get_w(text, mt, wv):
-    kws = mt.parse(text).split()
-    w = np.array([np.array(wv[kw]) for kw in kws if kw in wv])
-    return w
-
-
-def get_z(w):
-    z = 0
-    for w_i in w:
-        z += np.linalg.norm(w_i)
-    return z
-
-
-def cos_sim(v1, v2):
-    return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
-
+import pathfinders_main
 
 def calc_similarity(sentence_vecs, combination):
     w1 = sentence_vecs[combination[0]]
@@ -52,7 +36,7 @@ def main(args):
         sentences = f.readlines()
 
     def get_w_wrapper(sentence):
-        return get_w(sentence, mt, wv)
+        return pathfinders_main.get_w(sentence, mt, wv)
 
     sentence_vecs = list(map(get_w_wrapper, sentences))
     combinations = list(itertools.combinations(range(len(sentence_vecs)), 2))
