@@ -1,5 +1,6 @@
 # WRD implementaion for Japanese texts
 This repository is a WRD(Word Rotator's Distance) implemenation for Japanese texts.
+Slightly faster than the original codes.
 WRD is an improved algorithm of WMD(Word Mover's Distance) and achieves great performances in measuring textual similarities.
 See the details in the [paper](https://arxiv.org/abs/2004.15003v1).
 
@@ -22,21 +23,17 @@ Just run the below command. `--mecab_dict_path` is an optional argument.
 $ python main.py --mecab_dict_path /usr/local/lib/mecab/dic/mecab-ipadic-neologd/
 ```
 
-The result is shown as below, if you succeed.
-The value of the final line is WRD of the two sentences.
-The smaller WRD, the more similar.
-The larger WRD, the less similar.
+If successful, the result will be as follows.
+The value of the first line is the time taken to execute the pathfinders's code.
+The value of the final line is the time it takes to execute my code.
+My code is about 5 times faster than the pathfinder's code.
 
 ```
-大坂なおみ 逆転で2年ぶり2度目の全米OP優勝。3度目のグランドスラム制覇
-大坂なおみが2年ぶり2回目のV　4大大会3勝目　全米テニス
-0.31
+11.4994708340
+1.9490371520
 ```
 
-```
-大坂なおみ 逆転で2年ぶり2度目の全米OP優勝。3度目のグランドスラム制覇
-大相撲秋場所 八角理事長「横綱不在 申し訳ない」
-0.57
-```
+If you'd like to change the sentences to compare, edit the [sentences.txt](/sentences.txt) directly. 
 
-If you'd like to change the sentences to compare, edit the [main.py]() directly. 
+## Thanks
+the utmost gratitude to kenta1984 for his initial work.
