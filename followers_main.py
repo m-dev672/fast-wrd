@@ -1,6 +1,7 @@
 import os
 import argparse
 import itertools
+import time
 
 from gensim.models import KeyedVectors
 import MeCab
@@ -59,7 +60,12 @@ def main(args):
     def calc_similarity_wrapper(combination):
         return calc_similarity(sentence_vecs, combination)
 
-    print(list(map(calc_similarity_wrapper, combinations)))
+    start = time.perf_counter()
+    result = list(map(calc_similarity_wrapper, combinations))
+    end = time.perf_counter()
+    
+    print(end - start)
+    # print(result)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
