@@ -18,7 +18,7 @@ def calc_similarity(sentence_vecs, combination):
     m1 = w1_norm / w1_norm.sum()
 
     w2_norm = np.linalg.norm(w2, axis=1)
-    m2 = w2_norm / sum(w2_norm)
+    m2 = w2_norm / w2_norm.sum()
 
     # Compute cost matrix C
     w_dot = np.dot(w1, w2.T)
